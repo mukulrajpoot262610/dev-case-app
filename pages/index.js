@@ -2,81 +2,43 @@ import Head from 'next/head'
 
 export default function Home() {
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen py-2">
+    <div className="flex flex-col items-center justify-center h-full py-2">
       <Head>
-        <title>Create Next App</title>
+        <title>DEVcase</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="flex flex-col items-center justify-center w-full flex-1 px-20 text-center">
-        <h1 className="text-6xl font-bold">
-          Welcome to{' '}
-          <a className="text-blue-600" href="https://nextjs.org">
-            Next.js!
-          </a>
-        </h1>
+      <main className="min-h-screen p-4 flex flex-col items-center justify-center">
+        <h1 className="text-6xl md:text-9xl font-black text-transparent bg-clip-text bg-gradient-to-br from-red-500 to-purple-600">Namaste</h1>
+        <h1 className="text-6xl md:text-9xl font-black text-transparent bg-clip-text bg-gradient-to-br from-blue-500 to-green-600">Developers</h1>
 
-        <p className="mt-3 text-2xl">
-          Get started by editing{' '}
-          <code className="p-3 font-mono text-lg bg-gray-100 rounded-md">
-            pages/index.js
-          </code>
-        </p>
+        <p className="my-12 md:text-2xl md:w-10/12 text-gray-400 text-center">This is where code magicians can connect, showcase thier projects, and find new opportunities.</p>
 
-        <div className="flex flex-wrap items-center justify-around max-w-4xl mt-6 sm:w-full">
-          <a
-            href="https://nextjs.org/docs"
-            className="p-6 mt-6 text-left border w-96 rounded-xl hover:text-blue-600 focus:text-blue-600"
-          >
-            <h3 className="text-2xl font-bold">Documentation &rarr;</h3>
-            <p className="mt-4 text-xl">
-              Find in-depth information about Next.js features and API.
-            </p>
-          </a>
-
-          <a
-            href="https://nextjs.org/learn"
-            className="p-6 mt-6 text-left border w-96 rounded-xl hover:text-blue-600 focus:text-blue-600"
-          >
-            <h3 className="text-2xl font-bold">Learn &rarr;</h3>
-            <p className="mt-4 text-xl">
-              Learn about Next.js in an interactive course with quizzes!
-            </p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className="p-6 mt-6 text-left border w-96 rounded-xl hover:text-blue-600 focus:text-blue-600"
-          >
-            <h3 className="text-2xl font-bold">Examples &rarr;</h3>
-            <p className="mt-4 text-xl">
-              Discover and deploy boilerplate example Next.js projects.
-            </p>
-          </a>
-
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className="p-6 mt-6 text-left border w-96 rounded-xl hover:text-blue-600 focus:text-blue-600"
-          >
-            <h3 className="text-2xl font-bold">Deploy &rarr;</h3>
-            <p className="mt-4 text-xl">
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
+        <div className="flex items-center flex-col md:flex-row">
+          <button className="bg-gradient-to-br from-red-500 to-purple-600 py-4 px-8 rounded-full font-semibold text-xl md:mr-4 text-white">
+            Register Now!
+          </button>
+          <button className="bg-gradient-to-br from-blue-500 to-green-600 py-4 px-8 rounded-full font-semibold text-xl my-2 md:ml-4 text-white">
+            Learn More!
+          </button>
         </div>
       </main>
 
-      <footer className="flex items-center justify-center w-full h-24 border-t">
-        <a
-          className="flex items-center justify-center"
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className="h-4 ml-2" />
-        </a>
-      </footer>
+      <main className="container min-h-screen p-4 flex flex-col items-center justify-center">
+        <h1 className="text-4xl font-black text-transparent bg-clip-text bg-gradient-to-br from-red-500 to-purple-600 text-center">Experience the most rich feature social media for Developers</h1>
+
+        <p className="my-12 md:text-2xl md:w-10/12 text-gray-400 text-center">Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur molestias quae officia consequuntur doloremque quisquam voluptatem a! Ea, assumenda animi sed, exercitationem, aperiam optio minus quidem at dolorum error veniam!
+          Non nostrum velit, neque nobis a, exercitationem ipsa odit blanditiis ut est, animi officiis cumque quos! Unde aspernatur laborum doloremque sequi cum aliquam amet ut voluptates, corporis molestias architecto repudiandae.
+          Consequuntur mollitia rem doloribus eius animi nesciunt minima necessitatibus quae labore, dolor nemo non architecto iusto eos inventore at similique itaque sed doloremque quo eum explicabo libero corrupti tempora. Quam.
+          Inventore illo asperiores hic at fuga esse minima voluptatibus, omnis autem eligendi eum odio harum quam voluptas, vero dolorem exercitationem doloremque provident ipsam temporibus reiciendis! Ducimus molestiae eos obcaecati asperiores?
+          Reiciendis quidem error in nesciunt, minus obcaecati, ullam molestias similique laudantium perspiciatis suscipit illo! Obcaecati, quidem minima. Magnam placeat unde architecto eligendi sint dolorum in praesentium? Non sequi dolor mollitia!
+          Quos dolore, numquam nesciunt nihil repudiandae placeat, magni provident necessitatibus nemo facere totam nobis inventore minima distinctio quae quidem impedit possimus eos? Praesentium sunt tenetur vitae optio, dolorum ad numquam!</p>
+
+        <button className="bg-gradient-to-br from-red-500 to-purple-600 py-4 px-8 rounded-full font-semibold text-xl">
+          Register Now!
+        </button>
+      </main>
+
     </div>
   )
 }

@@ -6,6 +6,9 @@ module.exports = {
     extend: {
       colors: {
         primary: "#0c1014"
+      },
+      width: {
+        card: '30rem'
       }
     },
   },
