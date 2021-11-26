@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import Link from 'next/link'
 
 export default function Home() {
   return (
@@ -15,10 +16,12 @@ export default function Home() {
         <p className="my-12 md:text-2xl md:w-10/12 text-gray-400 text-center">This is where code magicians can connect, showcase thier projects, and find new opportunities.</p>
 
         <div className="flex items-center flex-col md:flex-row">
-          <button className="bg-gradient-to-br from-red-500 to-purple-600 py-4 px-8 rounded-full font-semibold text-xl md:mr-4 text-white">
-            Register Now!
+          <button className="btn btn-wide bg-gradient-to-br from-red-500 to-purple-600 rounded-full font-semibold text-xl md:mr-4 text-white border-0">
+            <Link href="/auth/register">
+              Register Now!
+            </Link>
           </button>
-          <button className="bg-gradient-to-br from-blue-500 to-green-600 py-4 px-8 rounded-full font-semibold text-xl my-2 md:ml-4 text-white">
+          <button className="btn btn-wide bg-gradient-to-br from-blue-500 to-green-600 rounded-full font-semibold text-xl my-2 md:ml-4 text-white border-0">
             Learn More!
           </button>
         </div>
@@ -34,7 +37,7 @@ export default function Home() {
           Reiciendis quidem error in nesciunt, minus obcaecati, ullam molestias similique laudantium perspiciatis suscipit illo! Obcaecati, quidem minima. Magnam placeat unde architecto eligendi sint dolorum in praesentium? Non sequi dolor mollitia!
           Quos dolore, numquam nesciunt nihil repudiandae placeat, magni provident necessitatibus nemo facere totam nobis inventore minima distinctio quae quidem impedit possimus eos? Praesentium sunt tenetur vitae optio, dolorum ad numquam!</p>
 
-        <button className="bg-gradient-to-br from-red-500 to-purple-600 py-4 px-8 rounded-full font-semibold text-xl">
+        <button className="bg-gradient-to-br from-red-500 to-purple-600 py-4 rounded-full font-semibold text-xl">
           Register Now!
         </button>
       </main>
