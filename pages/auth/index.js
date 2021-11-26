@@ -3,7 +3,18 @@ import Head from 'next/head'
 
 const Login = () => {
 
-    const [showPassword, setShowPassword] = useState()
+    const [showPassword, setShowPassword] = useState(false)
+    const [type, setType] = useState("password")
+
+    const password = () => {
+        if (showPassword === false) {
+            setShowPassword(true)
+            setType('text')
+        } else {
+            setShowPassword(false)
+            setType('password')
+        }
+    }
 
     const handleSubmit = () => {
 
@@ -16,7 +27,7 @@ const Login = () => {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
 
-            <div className="flex flex-col items-center justify-center rounded-xl shadow-2xl p-8 border border-gray-800">
+            <div className="flex flex-col items-center justify-center rounded-xl md:shadow-2xl p-8 md:border border-gray-800">
                 <p>DEVcase</p>
                 <h1 className="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-br from-red-400 to-purple-600 mt-6">Welcome Back!</h1>
                 <p className="mb-6 text-gray-400">You’ve been away too long...</p>
@@ -38,11 +49,19 @@ const Login = () => {
                 <p className="my-3">OR</p>
 
                 <form onSubmit={handleSubmit} className="w-full px-5">
-                    <div class="form-control w-full">
-                        <input type="text" placeholder="yourname@example.com" className="input dark:bg-primary border border-gray-400 dark:border-gray-800" />
+                    <div className="form-control w-full">
+                        <input type="email" placeholder="yourname@example.com" className="input dark:bg-primary border border-gray-400 dark:border-gray-800" required />
                     </div>
-                    <div class="form-control w-full my-2">
-                        <input type="password" placeholder="yourname@example.com" className="input dark:bg-primary border border-gray-400 dark:border-gray-800" />
+                    <div className="relative form-control w-full my-2">
+                        <input required type={type} placeholder="password" className="input dark:bg-primary border border-gray-400 dark:border-gray-800" />
+                        <h1 className="absolute right-4 cursor-pointer top-3">
+                            {
+                                showPassword ? <i className="fas fa-eye" onClick={password}></i> : <i className="fas fa-eye-slash" onClick={password}></i>
+                            }</h1>
+                        <p className="self-end text-2xs cursor-pointer mb-2 hover:underline">Forget Password?</p>
+                    </div>
+                    <div className="form-control w-full my-2">
+                        <button className="btn btn-wide">Continue</button>
                     </div>
                 </form>
 
