@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import Head from 'next/head'
+import Link from 'next/link'
 
 const Login = () => {
 
@@ -64,7 +65,7 @@ const Login = () => {
                         <button className="btn btn-wide">Continue</button>
                     </div>
                 </form>
-
+                <p className="text-xs">Don’t have an account? <Link className="hover:underline cursor-pointer" href="/auth/register">Sign Up</Link></p>
             </div>
 
         </div>
