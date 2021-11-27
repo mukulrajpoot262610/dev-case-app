@@ -3,6 +3,7 @@ import Head from 'next/head'
 import Link from 'next/link'
 import firebase from '../../config/firebase'
 import { useRouter } from 'next/router'
+import withoutAuth from '../../utils/withoutAuth'
 
 const Login = () => {
 
@@ -77,7 +78,9 @@ const Login = () => {
                             {
                                 showPassword ? <i className="fas fa-eye" onClick={passwordType}></i> : <i className="fas fa-eye-slash" onClick={passwordType}></i>
                             }</h1>
-                        <p className="self-end text-2xs cursor-pointer mb-2 hover:underline">Forget Password?</p>
+                        <Link href="/auth/forgetpassword">
+                            <p className="self-end text-2xs cursor-pointer mb-2 hover:underline">Forget Password?</p>
+                        </Link>
                     </div>
                     <div className="form-control w-full my-2">
                         <button className="btn btn-wide">Continue</button>
@@ -90,4 +93,4 @@ const Login = () => {
     )
 }
 
-export default Login
+export default withoutAuth(Login)

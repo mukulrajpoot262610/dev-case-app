@@ -3,6 +3,7 @@ import Head from 'next/head'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import firebase from '../../config/firebase'
+import withoutAuth from '../../utils/withoutAuth'
 
 const Register = () => {
 
@@ -124,4 +125,4 @@ const Register = () => {
     )
 }
 
-export default Register
+export default withoutAuth(Register)

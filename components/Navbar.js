@@ -2,9 +2,12 @@ import React from 'react'
 import { useTheme } from 'next-themes'
 import Link from 'next/link'
 import { useSelector } from 'react-redux'
-import firbase from '../config/firebase'
+import firebase from '../config/firebase'
+import { useRouter } from 'next/router'
 
 const Navbar = () => {
+
+    const router = useRouter()
 
     const { systemTheme, theme, setTheme } = useTheme()
     const user = useSelector(state => state.currentUser)
@@ -27,12 +30,12 @@ const Navbar = () => {
     const handleLogout = async () => {
         await firebase.auth().signOut()
             .then((res) => {
-                message.success('Logged Out Successfully')
+                alert('Logged Out Successfully')
                 router.replace('/')
                 localStorage.clear()
             })
             .catch((err) => {
-                message.error(err.message)
+                alert(err.message)
             })
     }
 

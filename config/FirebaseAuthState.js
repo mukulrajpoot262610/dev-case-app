@@ -43,17 +43,17 @@ const FirebaseAuthState = ({ children }) => {
                 const data1 = await res1.json()
                 const data2 = await res2.json()
 
-                // if (res1.status === 400 || res1.status === 500) {
-                //     dispatch({
-                //         type: 'USER_AUTH_LOGIN_FAIL',
-                //         payload: data1
-                //     })
-                // } else {
-                //     dispatch({
-                //         type: 'USER_AUTH_LOGIN_SUCCESS',
-                //         payload: data1
-                //     })
-                // }
+                if (res1.status === 400 || res1.status === 500) {
+                    dispatch({
+                        type: 'USER_AUTH_LOGIN_FAIL',
+                        payload: data1
+                    })
+                } else {
+                    dispatch({
+                        type: 'USER_AUTH_LOGIN_SUCCESS',
+                        payload: data1
+                    })
+                }
 
                 // if (res2.status === 400 || res2.status === 500) {
                 //     dispatch({

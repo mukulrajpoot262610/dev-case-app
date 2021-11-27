@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Head from 'next/head'
+import withAuth from '../../utils/withAuth'
 
 const Home = () => {
 
@@ -52,4 +53,4 @@ const Home = () => {
     )
 }
 
-export default Home
+export default withAuth(Home)

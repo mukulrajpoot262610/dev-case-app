@@ -35,7 +35,8 @@ const ForgetPassword = () => {
                 </div>
                 <form onSubmit={handleSubmit} className="w-full px-5 flex flex-col justify-center items-center">
                     <div className="form-control w-full">
-                        <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="yourname@example.com" className="input dark:bg-primary border border-gray-400 dark:border-gray-800" required />
+                        <p>Enter Your Email:</p>
+                        <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="yourname@example.com" className="input dark:bg-primary border border-gray-400 dark:border-gray-800 my-2" required />
                     </div>
                     <div className="form-control w-full my-2 mb-6 flex justify-center items-center">
                         <button type="submit" className="btn btn-wide">Continue</button>
