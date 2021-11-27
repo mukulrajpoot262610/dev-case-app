@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Head from 'next/head'
+import withAuth from '../../utils/withAuth'
 
 const Home = () => {
 
@@ -34,8 +35,14 @@ const Home = () => {
                     <p className="p-2 px-4 border rounded-lg"><i class="fas fa-bookmark mr-1"></i>&nbsp;Saved</p>
                 </div>
                 <div className="relative h-full w-8/12 mx-4 p-4">
-                    <CustomTextarea minRows={4} />
-                    <h1 className="absolute bottom-10 left-10">Helo</h1>
+                    <CustomTextarea minRows={3} />
+                    <div className="absolute bottom-10 left-10 flex">
+                        <i class="fas fa-plus-circle"></i>
+                        <i class="mx-4 fas fa-code"></i>
+                    </div>
+                    <div className="absolute bottom-10 right-10 flex">
+                        <i class="fas fa-paper-plane"></i>
+                    </div>
                 </div>
                 <div className="h-full w-2/12 mx-4 p-4">
                     Mukul Rajpoot
@@ -46,4 +53,4 @@ const Home = () => {
     )
 }
 
-export default Home
+export default withAuth(Home)

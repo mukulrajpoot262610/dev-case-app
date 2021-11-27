@@ -1,13 +1,19 @@
 import React, { useState } from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
+import firebase from '../../config/firebase'
+import { useRouter } from 'next/router'
+import withoutAuth from '../../utils/withoutAuth'
 
 const Login = () => {
 
+    const router = useRouter()
     const [showPassword, setShowPassword] = useState(false)
+    const [email, setEmail] = useState()
+    const [password, setPassword] = useState()
     const [type, setType] = useState("password")
 
-    const password = () => {
+    const passwordType = () => {
         if (showPassword === false) {
             setShowPassword(true)
             setType('text')
@@ -17,8 +23,21 @@ const Login = () => {
         }
     }
 
-    const handleSubmit = () => {
+    const handleSubmit = async (e) => {
+        e.preventDefault()
 
+        await firebase.auth().signInWithEmailAndPassword(email, password)
+            .then((user) => {
+                if (user.user.emailVerified) {
+                    alert('Logged in Successfully 🎉')
+                    router.push('/app')
+                } else {
+                    alert('Please Verify your email first!')
+                }
+            })
+            .catch((err) => {
+                alert(err.message)
+            })
     }
 
     return (
@@ -51,15 +70,17 @@ const Login = () => {
 
                 <form onSubmit={handleSubmit} className="w-full px-5">
                     <div className="form-control w-full">
-                        <input type="email" placeholder="yourname@example.com" className="input dark:bg-primary border border-gray-400 dark:border-gray-800" required />
+                        <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="yourname@example.com" className="input dark:bg-primary border border-gray-400 dark:border-gray-800" required />
                     </div>
                     <div className="relative form-control w-full my-2">
-                        <input required type={type} placeholder="password" className="input dark:bg-primary border border-gray-400 dark:border-gray-800" />
+                        <input required type={type} value={password} onChange={(e) => setPassword(e.target.value)} placeholder="password" className="input dark:bg-primary border border-gray-400 dark:border-gray-800" />
                         <h1 className="absolute right-4 cursor-pointer top-3">
                             {
-                                showPassword ? <i className="fas fa-eye" onClick={password}></i> : <i className="fas fa-eye-slash" onClick={password}></i>
+                                showPassword ? <i className="fas fa-eye" onClick={passwordType}></i> : <i className="fas fa-eye-slash" onClick={passwordType}></i>
                             }</h1>
-                        <p className="self-end text-2xs cursor-pointer mb-2 hover:underline">Forget Password?</p>
+                        <Link href="/auth/forgetpassword">
+                            <p className="self-end text-2xs cursor-pointer mb-2 hover:underline">Forget Password?</p>
+                        </Link>
                     </div>
                     <div className="form-control w-full my-2">
                         <button className="btn btn-wide">Continue</button>
@@ -72,4 +93,4 @@ const Login = () => {
     )
 }
 
-export default Login
+export default withoutAuth(Login)
