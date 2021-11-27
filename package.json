@@ -19,7 +19,8 @@
     "redux": "^4.1.2",
     "redux-devtools-extension": "^2.13.9",
     "redux-thunk": "^2.4.0",
-    "theme-change": "^2.0.2"
+    "theme-change": "^2.0.2",
+    "vanillatoasts": "^1.4.0"
   },
   "devDependencies": {
     "autoprefixer": "^10.2.6",
