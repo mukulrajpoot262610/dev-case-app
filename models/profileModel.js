@@ -3,24 +3,23 @@ import mongoose from 'mongoose'
 const ProfileSchema = new mongoose.Schema({
     user: { type: mongoose.Schema.Types.ObjectId, ref: 'user' },
     email: { type: String },
+    username: { type: String, unique: true },
+    name: { type: String },
+    status: {
+        type: String,
+        enum: ['Just Joined', 'Chilling', 'Open to Work', 'Looking for Project Partener', 'Busy', 'Ghost'],
+        default: 'Just Joined'
+    },
     avatar: { type: String },
-    about: { type: String },
-    collegeYear: { type: String },
-    connections: [
-        {
-            user: { type: mongoose.Schema.Types.ObjectId, ref: 'user' },
-            name: { type: String },
-            avatar: { type: String },
-            headline: { type: String },
-        }
-    ],
-    facebook: { type: String },
+    location: { type: String },
+    headline: { type: String },
     followers: [
         {
             user: { type: mongoose.Schema.Types.ObjectId, ref: 'user' },
             name: { type: String },
             avatar: { type: String },
             headline: { type: String },
+            username: { type: String, unique: true },
         }
     ],
     following: [
@@ -29,20 +28,18 @@ const ProfileSchema = new mongoose.Schema({
             name: { type: String },
             avatar: { type: String },
             headline: { type: String },
+            username: { type: String, unique: true },
         }
     ],
-    github: { type: String },
-    headline: { type: String },
-    instagram: { type: String },
-    linkedin: { type: String },
-    name: { type: String },
-    project1: { type: String },
-    project2: { type: String },
-    project3: { type: String },
-    project4: { type: String },
-    skill: { type: Array },
-    stack: { type: String },
-    twitter: { type: String },
+    workedWith: [
+        {
+            user: { type: mongoose.Schema.Types.ObjectId, ref: 'user' },
+            name: { type: String },
+            avatar: { type: String },
+            headline: { type: String },
+            username: { type: String, unique: true },
+        }
+    ],
     website: { type: String },
 },
     { timestamps: true }

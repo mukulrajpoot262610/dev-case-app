@@ -1,8 +1,8 @@
 import Head from 'next/head'
 import Link from 'next/link'
+import withoutAuth from '../utils/withoutAuth'
 
-
-export default function Home() {
+function Home() {
 
   return (
     <div className="flex flex-col items-center justify-center h-full py-2">
@@ -47,3 +47,5 @@ export default function Home() {
     </div>
   )
 }
+
+export default withoutAuth(Home)

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Head from 'next/head'
 import withAuth from '../../utils/withAuth'
+import Post from '../../components/Post'
 
 const Home = () => {
 
@@ -17,9 +18,10 @@ const Home = () => {
         }, [value]);
 
         return (
-            <textarea rows={rows} placeholder="What's going on?" className="w-full shadow-xl rounded-lg p-5 pb-12 bg-gray-100 dark:bg-gray-900" onChange={(text) => setValue(text.target.value)} />
+            <textarea rows={rows} value={value} placeholder="What's going on?" className="w-full shadow-sm rounded-lg p-5 pb-12 bg-gray-100 dark:bg-gray-900" onChange={(text) => setValue(text.target.value)} />
         );
     }
+
 
     return (
         <div className="flex flex-col items-center justify-center min-h-screen py-2">
@@ -28,23 +30,35 @@ const Home = () => {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
 
-            <main className="container flex min-h-screen px-10">
-                <div className="shadow-xl rounded-lg h-full w-2/12 mx-4 p-4">
-                    <p className="p-2 px-4 border rounded-lg"><i class="fas fa-home mr-1"></i>&nbsp;Home</p>
-                    <p className=" my-2 p-2 px-4 border rounded-lg"><i class="fas fa-suitcase mr-1"></i>&nbsp;Case</p>
-                    <p className="p-2 px-4 border rounded-lg"><i class="fas fa-bookmark mr-1"></i>&nbsp;Saved</p>
+            <main className="container flex min-h-screen">
+                <div className="hidden sm:block shadow-sm rounded-lg h-full w-2/12 lg:w-3/12 p-2">
+                    <p className="p-2 px-4 rounded-lg"><i className="fas fa-home"></i>&nbsp;<span className="hidden lg:inline-block">Home</span></p>
+                    <p className=" my-2 p-2 px-4 rounded-lg"><i className="fas fa-suitcase mr-1"></i>&nbsp;<span className="hidden lg:inline-block">Case</span></p>
+                    <p className="p-2 px-4 rounded-lg"><i className="fas fa-bookmark mr-1"></i>&nbsp;<span className="hidden lg:inline-block">Saved</span></p>
                 </div>
-                <div className="relative h-full w-8/12 mx-4 p-4">
-                    <CustomTextarea minRows={3} />
-                    <div className="absolute bottom-10 left-10 flex">
-                        <i class="fas fa-plus-circle"></i>
-                        <i class="mx-4 fas fa-code"></i>
+
+                <div className="h-full w-full sm:w-10/12 lg:w-6/12 p-2">
+                    <div className="relative w-full">
+                        <CustomTextarea minRows={3} />
+                        <div className="absolute bottom-6 left-6 flex">
+                            <i className="fas fa-plus-circle"></i>
+                            <i className="mx-4 fas fa-code"></i>
+                        </div>
+                        <div className="absolute bottom-6 right-6 flex">
+                            <i className="fas fa-paper-plane"></i>
+                        </div>
                     </div>
-                    <div className="absolute bottom-10 right-10 flex">
-                        <i class="fas fa-paper-plane"></i>
-                    </div>
+                    <hr className="my-4 dark:border-gray-700" />
+                    {
+                        <>
+                            <Post />
+                            <Post />
+                            <Post />
+                        </>
+                    }
                 </div>
-                <div className="h-full w-2/12 mx-4 p-4">
+
+                <div className="hidden lg:block h-full w-2/12 lg:w-3/12 mx-4 p-2">
                     Mukul Rajpoot
                 </div>
             </main>
