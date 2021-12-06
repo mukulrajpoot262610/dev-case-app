@@ -20,9 +20,9 @@ const FirebaseAuthState = ({ children }) => {
                     type: 'USER_AUTH_LOGIN_REQUEST'
                 })
 
-                dispatch({
-                    type: 'USER_PROFILE_REQUEST'
-                })
+                // dispatch({
+                //     type: 'USER_PROFILE_REQUEST'
+                // })
 
                 const res1 = await fetch('/api/firebase/user', {
                     method: 'GET',
@@ -32,16 +32,16 @@ const FirebaseAuthState = ({ children }) => {
                     }
                 })
 
-                const res2 = await fetch('/api/firebase/profile', {
-                    method: 'GET',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'token': token
-                    }
-                })
+                // const res2 = await fetch('/api/firebase/profile', {
+                //     method: 'GET',
+                //     headers: {
+                //         'Content-Type': 'application/json',
+                //         'token': token
+                //     }
+                // })
 
                 const data1 = await res1.json()
-                const data2 = await res2.json()
+                // const data2 = await res2.json()
 
                 if (res1.status === 400 || res1.status === 500) {
                     dispatch({

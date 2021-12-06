@@ -1,4 +1,5 @@
 import Profile from '../models/profileModel'
+import User from '../models/UserModel'
 
 // @route  POST api/profile
 // @desc   Create new Profile
@@ -91,6 +92,25 @@ export const GetAllProfile = async (req, res) => {
     } catch (err) {
         console.log(err.message)
         res.send({ err: "Server Error" })
+    }
+}
+
+// @route  PUT api/profile
+// @desc   Update Profile
+// @access PRIVATE
+export const UpdateProfile = async (req, res) => {
+    if (true) {
+        try {
+            const profile = await User.findById(req.currentUser.id)
+            profile.username = req.body.username;
+            const hef = await profile.save();
+            res.status(200).json(hef)
+        } catch (err) {
+            console.log(err.message)
+            res.send({ err: "Server Error" })
+        }
+    } else {
+        res.status(401).json({ errors: [{ msg: 'You are not Allowed' }] })
     }
 }
 
