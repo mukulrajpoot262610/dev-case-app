@@ -32,7 +32,7 @@ const Profile = () => {
 
         }
 
-        // userData && fetchData()
+        userData && fetchData()
     }, [userData])
 
     return (
@@ -45,27 +45,26 @@ const Profile = () => {
             {
                 githubData ? (
                     <main className="w-full flex flex-col items-center min-h-screen">
-                        <div className="bg-gray-600 w-full h-96"></div>
-                        <main className="relative container min-h-screen px-20">
-                            <div className="flex justify-between w-full items-start bg-red-600">
-                                <div className="avatar absolute -top-28">
-                                    <div className="mb-8 w-60 h-60 mask mask-squircle">
+                        <div className="bg-gray-600 w-full h-56 lg:h-96"></div>
+                        <main className="relative container min-h-screen p-4 md:px-10">
+                            <div className="flex flex-col justify-between w-full items-start">
+                                <div className="avatar absolute -top-20 md:-top-28">
+                                    <div className="mb-8 w-40 h-40 md:w-60 md:h-60 mask mask-squircle">
                                         <img src={githubData.avatar_url} />
                                     </div>
                                 </div>
-                                <div className="absolute right-16 my-6">
+                                <div className="absolute right-0 mb-6">
                                     <button className="btn bordered">Edit Profile</button>
-                                    <i className="fas fa-ellipsis-h mx-4 cursor-pointer hover:bg-gray-50 p-4 rounded-full"></i>
+                                    <i className="fas fa-ellipsis-h md:mx-4 cursor-pointer hover:bg-gray-50 p-4 rounded-full"></i>
                                 </div>
                             </div>
-                            <div className="mt-36 mx-10">
+                            <div className="mt-20 md:mt-36">
                                 {/* NAME */}
                                 <h1 className="font-bold text-4xl">{githubData.name}</h1>
                                 {/* GITHUB DATA */}
-                                <div className="flex items-center">
-                                    <h1 className="font-bold text-xl text-gray-500">@{githubData.login}</h1>
-                                    <h1 className="mx-8 font-bold text-xl text-gray-500"><i className="fas fa-map-marker-alt"></i>&nbsp;{githubData.location}</h1>
-                                    <h1 className="font-bold text-xl text-gray-500"><i className="far fa-calendar-alt"></i>&nbsp;Joined Nov 2021</h1>
+                                <div className="flex items-center w-full flex-wrap">
+                                    <h1 className="mr-8 font-bold text-xl text-gray-500">@{githubData.login}</h1>
+                                    <h1 className="font-bold text-xl text-gray-500"><i className="fas fa-map-marker-alt"></i>&nbsp;{githubData.location}</h1>
                                 </div>
                                 {/* HEADLINE */}
                                 <h1 className="font-normal text-2xl my-4">{githubData.bio}</h1>

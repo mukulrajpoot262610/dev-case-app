@@ -47,7 +47,7 @@ const Login = () => {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
 
-            <div className="flex flex-col items-center justify-center rounded-xl md:shadow-2xl p-8 md:border border-gray-800">
+            <div className="flex flex-col items-center justify-center rounded-xl md:shadow-sm p-8 md:border border-gray-800">
                 <h1 className="text-3xl font-black text-transparent bg-clip-text bg-gradient-to-br from-red-500 to-purple-600">DEV<span className="font-black text-transparent bg-clip-text bg-gradient-to-br from-green-500 to-blue-600">case</span></h1>
                 <h1 className="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-br from-red-400 to-purple-600 mt-6">Welcome Back!</h1>
                 <p className="mb-6 text-gray-400">You’ve been away too long...</p>
