@@ -4,7 +4,6 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import firebase from '../../config/firebase'
 import withoutAuth from '../../utils/withoutAuth'
-import githubUsername from 'github-username';
 import { useDispatch } from 'react-redux'
 import updateUsername from '../../store/actions/profileActions'
 
@@ -71,12 +70,6 @@ const Register = () => {
             })
     }
 
-    const fetchUsername = async () => {
-        if (!email) return alert('Enter your E-mail')
-
-        githubUsername(email).then((res) => dispatch(updateUsername(res))).catch((err) => console.log(err))
-    }
-
     return (
         <div className="flex flex-col items-center justify-center min-h-screen py-2">
             <Head>
@@ -124,7 +117,7 @@ const Register = () => {
                             }</h1>
                     </div>
                     <div className="form-control w-full my-2">
-                        <button className="btn btn-wide" onClick={fetchUsername}>Continue</button>
+                        <button className="btn btn-wide">Continue</button>
                     </div>
                 </form>
 

@@ -1,14 +1,16 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useTheme } from 'next-themes'
 import Link from 'next/link'
 import { useSelector } from 'react-redux'
 import firebase from '../config/firebase'
 import { useRouter } from 'next/router'
+import Dropdown from './Dropdown'
 
 const Navbar = () => {
 
     const router = useRouter()
 
+    const [dropdown, setDropdown] = useState(false)
     const { systemTheme, theme, setTheme } = useTheme()
     const user = useSelector(state => state.currentUser)
     const { isAuth, loading, userData } = user;
@@ -51,11 +53,13 @@ const Navbar = () => {
                             <>
                                 <button className="btn mx-2 bg-gradient-to-br from-blue-500 to-green-600" onClick={handleLogout}>LogOut</button>
                                 <i className="far fa-bell mx-2 text-2xl"></i>
-                                <div className="avatar mx-2">
-                                    <div className="w-10 h-10 mask mask-squircle">
-                                        <img src="http://daisyui.com/tailwind-css-component-profile-1@94w.png" />
+                                <Link href={`/app/${userData.username}`}>
+                                    <div className="avatar mx-2" onClick={() => setDropdown(!dropdown)}>
+                                        <div className="w-10 h-10 mask mask-squircle">
+                                            <img src="http://daisyui.com/tailwind-css-component-profile-1@94w.png" />
+                                        </div>
                                     </div>
-                                </div>
+                                </Link>
                             </>
                         ) :
                             (
