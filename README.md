@@ -16,7 +16,7 @@ npm install
 3. Then create a service account on firebase 
 4. After creating copy your service account's private keys
 5. Then create a cluster on mongodb and copy mongo connection string
-6. paste all keys in `module.config.js` accordingly.
+6. paste all keys in `next.config.js` accordingly.
 
 ## Preview
 
