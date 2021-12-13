@@ -25,6 +25,13 @@ export const userReducer = (state = { userData: {} }, action) => {
                 error: action.payload,
                 isAuth: false,
             }
+        case 'USER_GITHUB_NOT_FOUND':
+            return {
+                ...state,
+                loading: false,
+                error: action.payload,
+                isAuth: true,
+            }
         case 'USER_LOGOUT':
             localStorage.clear()
             return {

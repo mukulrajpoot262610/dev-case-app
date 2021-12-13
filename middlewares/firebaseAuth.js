@@ -23,7 +23,7 @@ const firebaseAuth = async (req, res, next) => {
 
     } catch (err) {
         res.status(400).json({
-            err: err.message
+            err: "MIDDLEWARE: " + err.message
         })
     }
 }

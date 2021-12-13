@@ -4,7 +4,6 @@ import Link from 'next/link'
 import { useSelector } from 'react-redux'
 import firebase from '../config/firebase'
 import { useRouter } from 'next/router'
-import Dropdown from './Dropdown'
 
 const Navbar = () => {
 
@@ -52,14 +51,6 @@ const Navbar = () => {
                         isAuth ? (
                             <>
                                 <button className="btn mx-2 bg-gradient-to-br from-blue-500 to-green-600" onClick={handleLogout}>LogOut</button>
-                                <i className="far fa-bell mx-2 text-2xl"></i>
-                                <Link href={`/app/${userData.username}`}>
-                                    <div className="avatar mx-2" onClick={() => setDropdown(!dropdown)}>
-                                        <div className="w-10 h-10 mask mask-squircle">
-                                            <img src="http://daisyui.com/tailwind-css-component-profile-1@94w.png" />
-                                        </div>
-                                    </div>
-                                </Link>
                             </>
                         ) :
                             (

@@ -1,59 +1,45 @@
-import axios from "axios"
-
 export const updateUsername = (username) => async (dispatch) => {
 
-    try {
-        const res = await fetch('/api/firebase/profile', {
-            method: 'PUT',
-            headers: {
-                token: localStorage.getItem('TOKEN'),
-            },
-            body: {
-                username: username
+    const formdata = {
+        username: username
+    }
+
+    if (username !== 'ERROR') {
+        try {
+            const res = await fetch('/api/firebase/profile', {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'accept': 'application/json',
+                    'token': localStorage.getItem('TOKEN'),
+                },
+                body: JSON.stringify(formdata)
+            })
+
+            const data = await res.json()
+
+            if (res.status === 401 || res.status === 500) {
+                dispatch({
+                    type: 'USER_AUTH_LOGIN_FAIL',
+                    payload: err.message
+                })
+            } else {
+                dispatch({
+                    type: 'USER_AUTH_LOGIN_SUCCESS',
+                    payload: data
+                })
             }
-        })
 
-        const data = await res.json()
-
-        if (res.status === 401) {
+        } catch (err) {
             dispatch({
                 type: 'USER_AUTH_LOGIN_FAIL',
                 payload: err.message
             })
-        } else {
-            dispatch({
-                type: 'USER_AUTH_LOGIN_SUCCESS',
-                payload: data
-            })
         }
-
-    } catch (err) {
+    } else {
         dispatch({
-            type: 'USER_AUTH_LOGIN_FAIL',
-            payload: err.message
-        })
-    }
-}
-
-export const detailProducts = (id) => async (dispatch) => {
-    try {
-        dispatch({ type: 'PRODUCT_DETAIL_REQUEST' })
-
-        const { data } = await axios.get(`/api/products/${id}`, {
-            headers: {
-                id: id
-            }
-        })
-
-        dispatch({
-            type: 'PRODUCT_DETAIL_SUCCESS',
-            payload: data
-        })
-
-    } catch (err) {
-        dispatch({
-            type: 'PRODUCT_DETAIL_FAIL',
-            payload: err.message
+            type: 'USER_GITHUB_NOT_FOUND',
+            payload: 'GITHUB ACCOUNT NOT FOUND'
         })
     }
 }
