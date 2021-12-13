@@ -3,6 +3,7 @@ import Head from 'next/head'
 import Link from 'next/link'
 import firebase from '../../config/firebase'
 import { useRouter } from 'next/router'
+import withoutAuth from '../../utils/withoutAuth'
 
 const ForgetPassword = () => {
 
@@ -48,4 +49,4 @@ const ForgetPassword = () => {
     )
 }
 
-export default ForgetPassword
+export default withoutAuth(ForgetPassword)

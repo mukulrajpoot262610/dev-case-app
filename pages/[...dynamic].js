@@ -5,7 +5,6 @@ import { useRouter } from 'next/router'
 
 import firebase from '../config/firebase';
 import EmailVerify from '../components/emailVerify';
-// import withoutAuth from '../utils/withoutAuth';
 
 const NewPassword = () => {
 

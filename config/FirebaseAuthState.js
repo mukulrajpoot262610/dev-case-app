@@ -13,59 +13,35 @@ const FirebaseAuthState = ({ children }) => {
                     type: 'USER_LOGOUT'
                 })
             } else {
-                const { token } = await user.getIdTokenResult();
-                localStorage.setItem('TOKEN', token)
-
                 dispatch({
                     type: 'USER_AUTH_LOGIN_REQUEST'
                 })
+                if (user.emailVerified) {
+                    const { token } = await user.getIdTokenResult();
+                    localStorage.setItem('TOKEN', token)
 
-                // dispatch({
-                //     type: 'USER_PROFILE_REQUEST'
-                // })
+                    const res1 = await fetch('/api/firebase/user', {
+                        method: 'GET',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'token': token
+                        }
+                    })
 
-                const res1 = await fetch('/api/firebase/user', {
-                    method: 'GET',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'token': token
+                    const data1 = await res1.json()
+
+                    if (res1.status === 400 || res1.status === 500) {
+                        dispatch({
+                            type: 'USER_AUTH_LOGIN_FAIL',
+                            payload: data1
+                        })
+                    } else {
+                        dispatch({
+                            type: 'USER_AUTH_LOGIN_SUCCESS',
+                            payload: data1
+                        })
                     }
-                })
-
-                // const res2 = await fetch('/api/firebase/profile', {
-                //     method: 'GET',
-                //     headers: {
-                //         'Content-Type': 'application/json',
-                //         'token': token
-                //     }
-                // })
-
-                const data1 = await res1.json()
-                // const data2 = await res2.json()
-
-                if (res1.status === 400 || res1.status === 500) {
-                    dispatch({
-                        type: 'USER_AUTH_LOGIN_FAIL',
-                        payload: data1
-                    })
-                } else {
-                    dispatch({
-                        type: 'USER_AUTH_LOGIN_SUCCESS',
-                        payload: data1
-                    })
                 }
-
-                // if (res2.status === 400 || res2.status === 500) {
-                //     dispatch({
-                //         type: 'USER_PROFILE_FAIL',
-                //         payload: data2
-                //     })
-                // } else {
-                //     dispatch({
-                //         type: 'USER_PROFILE_SUCCESS',
-                //         payload: data2
-                //     })
-                // }
             }
         })
     }, [dispatch])
