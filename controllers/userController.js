@@ -18,7 +18,6 @@ export const UpdateProfile = async (req, res) => {
             const hef = await profile.save();
             res.status(200).json(hef)
         } catch (err) {
-            console.log(err.message)
             res.send({ err: "Server Error" })
         }
     } else {

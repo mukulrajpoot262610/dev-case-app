@@ -26,7 +26,6 @@ const NewPassword = () => {
     }
 
     const router = useRouter()
-    console.log(router.query)
 
     const renderPage = async () => {
         if (router.query.mode === "verifyEmail") {

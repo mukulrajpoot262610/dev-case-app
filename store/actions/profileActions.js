@@ -18,10 +18,7 @@ export const updateUsername = (username) => async (dispatch) => {
 
             const data = await res.json()
 
-            console.log("DATA ", data)
-
             if (res.status === 401 || res.status === 500) {
-                console.log('Heloo')
                 dispatch({
                     type: 'USER_AUTH_LOGIN_FAIL',
                     payload: err.message
@@ -36,7 +33,7 @@ export const updateUsername = (username) => async (dispatch) => {
         } catch (err) {
             dispatch({
                 type: 'USER_AUTH_LOGIN_FAIL',
-                payload: "ACTION: " + err.message
+                payload: err.message
             })
         }
     } else {

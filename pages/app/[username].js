@@ -12,8 +12,6 @@ const Profile = () => {
     const user = useSelector(state => state.currentUser)
     const { userData, loading, isAuth } = user;
 
-    console.log(githubData)
-
     useEffect(() => {
         const fetchData = async () => {
             const res = await fetch(`https://api.github.com/users/${userData.username}`, {

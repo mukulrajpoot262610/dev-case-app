@@ -4,18 +4,14 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import firebase from '../../config/firebase'
 import withoutAuth from '../../utils/withoutAuth'
-import { useDispatch, useSelector } from 'react-redux'
-import updateUsername from '../../store/actions/profileActions'
 
 const Register = () => {
 
     const router = useRouter()
-    const dispatch = useDispatch()
     const [loading, setLoading] = useState(false)
     const [showPassword, setShowPassword] = useState(false)
     const [type, setType] = useState("password")
     const [email, setEmail] = useState()
-    const [username, setUsername] = useState()
     const [password, setPassword] = useState()
     const [cpassword, setCPassword] = useState()
 
@@ -55,7 +51,6 @@ const Register = () => {
         await firebase.auth().signInWithPopup(new firebase.auth.GithubAuthProvider())
             .then((user) => {
                 alert('Login Success 🎉')
-                console.log(user)
                 router.push('/app')
             }).catch((err) => {
                 alert(err.message)
@@ -66,7 +61,6 @@ const Register = () => {
         await firebase.auth().signInWithPopup(new firebase.auth.GoogleAuthProvider())
             .then((user) => {
                 alert('Login Success 🎉')
-                console.log(user)
                 router.push('/app')
             }).catch((err) => {
                 alert(err.message)

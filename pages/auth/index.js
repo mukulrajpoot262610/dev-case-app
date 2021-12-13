@@ -49,7 +49,6 @@ const Login = () => {
         await firebase.auth().signInWithPopup(new firebase.auth.GithubAuthProvider())
             .then((user) => {
                 alert('Login Success 🎉')
-                console.log(user)
                 router.push('/app')
             }).catch((err) => {
                 alert(err.message)
@@ -60,7 +59,6 @@ const Login = () => {
         await firebase.auth().signInWithPopup(new firebase.auth.GoogleAuthProvider())
             .then((user) => {
                 alert('Login Success 🎉')
-                console.log(user)
                 router.push('/app')
             }).catch((err) => {
                 alert(err.message)

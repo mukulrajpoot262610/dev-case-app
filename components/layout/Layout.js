@@ -12,7 +12,6 @@ const Layout = ({ children }) => {
     useEffect(() => {
         if (!userData.username && userData.email) {
             githubUsername(userData.email).then((res) => {
-                console.log(res)
                 dispatch(updateUsername(res))
             }).catch((err) => dispatch(updateUsername("ERROR")))
         }
